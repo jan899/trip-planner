@@ -1,4 +1,5 @@
 import requests
+import json
 
 country_input = "US"
 currency_input = "USD"
@@ -18,4 +19,7 @@ headers = {
 response = requests.request("GET", url, headers=headers, params=querystring)
 
 #print(response.text)
-print(response("Quotes"))
+#print(response.text["Quotes"])
+
+#j =json.loads(response.text)
+#print(json.dumps(j, indent =2))

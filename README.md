@@ -31,13 +31,29 @@ pip install -r requirements.txt
 Create a local .env file to this repo and put the following contents inside:
 
 '''
-SENDGRID_API_KEY="Private Sendgrid API Key"
-SENDER_ADDRESS="Sender's email address"
+SENDGRID_API_KEY="_______________"
+SENDER_ADDRESS="______________"
 '''
 
 ## Run
 
-Run the program script:
+Run the program script locally:
 
 '''py
 python trip_planner.py
+
+Run the program script on a web application with Flask:
+
+# Mac OS:
+
+'''sh
+FLASK_APP=web_app flask run
+'''
+
+# Windows OS:
+# ... if `export` doesn't work for you, try `set` instead
+
+'''sh
+export FLASK_APP=web_app
+flask run
+'''
