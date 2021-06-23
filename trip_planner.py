@@ -1,6 +1,6 @@
 import requests
 
-url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/2019-09-01"
+url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/BOS/LGA-sky/2021-06-24"
 
 querystring = {"inboundpartialdate":"2021-06-23"}
 
@@ -11,4 +11,5 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
-print(response.text)
+#print(response.text)
+print(response("Quotes"))

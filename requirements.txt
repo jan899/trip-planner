@@ -1,2 +1,16 @@
 
+# DEVELOPMENT
+
+python-dotenv
 requests
+sendgrid==6.6.0
+
+
+# WEB INTERFACE
+
+Flask
+
+
+# TEST
+
+pytest
