@@ -2,8 +2,25 @@
 
 {% block content %}
 
-    <h1>Welcome Home</h1>
+    <h2>Trip Planner</h2>
 
-    <p>This is a paragraph on the "home" page.</p>
+    <p>Input your itinerary...</p>
+
+    <form action="/home/results" method="POST">
+
+        <label>Departure Airport:</label>
+        <input type="text" name="airport_code" placeholder="JFK" value="JFK">
+        <br>
+        
+        <label>Arrival Airport:</label>
+        <input type="text" name="airport_code" placeholder="LAX" value="LAX">
+        <br>
+
+        <label>Departure Date:</label>
+        <input type="text" name="departure_date" placeholder="2021-07-01" value="2021-07-01">
+        <br>
+
+        <button>Submit</button>
+    </form>
 
 {% endblock %}
