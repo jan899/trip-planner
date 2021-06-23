@@ -2,8 +2,8 @@ import requests
 import json
 
 
-origin_input_value = input("Please Input Departing City:")
-destination_input_value = input("Please Input Destination City:")
+origin_input_value = input("Please Input Departing Airport:")
+destination_input_value = input("Please Input Destination Airport:")
 year_input_value = input("Please Input Departure Year (yyyy):")
 month_input_value = input("Please Input Departure Month (mm):")
 day_input_value= input("Please Input Departure Day (dd):")
