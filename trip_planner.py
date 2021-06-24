@@ -73,7 +73,7 @@ cheapest_price = to_usd(raw_data["Quotes"][1]["MinPrice"])
 cheapest_direct = raw_data["Quotes"][1]["Direct"]
 if cheapest_direct == True:
     if True: cheapest_direct = "Yes"
-    if False: cheapest_direct = "Yes"
+    if False: cheapest_direct = "No"
 
 print("Airline:",cheapest_airline)
 print("Price:",cheapest_price)

@@ -3,18 +3,18 @@
 
 {% block content %}
 
-    <h2>Trip Planner</h2>
+    <h2>Results</h2>
 
-    <p>Input your itinerary...</p>
+    <p>Cheapest Price: {{ cheapest_price }}</p>
 
     <form action="/home/results" method="POST">
 
         <label>Departure Airport:</label>
-        <input type="text" name="departure_airport_code" placeholder="JFK" value="JFK">
+        <input type="text" name="airport_code" placeholder="JFK" value="JFK">
         <br>
         
         <label>Arrival Airport:</label>
-        <input type="text" name="arrival_airport_code" placeholder="LAX" value="LAX">
+        <input type="text" name="airport_code" placeholder="LAX" value="LAX">
         <br>
 
         <label>Departure Date:</label>
