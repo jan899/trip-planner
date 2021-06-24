@@ -109,7 +109,13 @@ if user_wants_email == "y":
 
     subject = "Your Flight Information:"
     
-    html_content = "We Found You a Flight on: {}, Airline: {}. Total Amount = {}. Is Direct: = {}.".format(date_input,cheapest_airline,cheapest_price,cheapest_direct)
+    html_content = f"""
+    <h3>Hello this is your flight </h3>
+    <p>Date: {date_input} </p>
+    <p>Airline: {cheapest_airline} </p>
+    <p>Price: {cheapest_price} </p>
+    <p>Direct: {cheapest_direct} </p>
+    """
 
     # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
     # ... but we can customize the `to_emails` param to send to other addresses
