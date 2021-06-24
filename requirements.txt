@@ -3,7 +3,7 @@
 
 python-dotenv
 requests
-sendgrid==6.6.0
+sendgrid
 
 
 # WEB INTERFACE
