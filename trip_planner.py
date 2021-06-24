@@ -1,13 +1,29 @@
+# Setup and imports
+
 import requests
 import json
 
+# Credit: Professor Rossetti 
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+
+    Param: my_price (int or float) like 4000.444444
+
+    Example: to_usd(4000.444444)
+
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
 # Introduce the user to the app
 
-print("---------------------------------")
-print("Welcome to the Flight Finder App!")
-print("---------------------------------")
-
-print("Lets find you a flight!")
+print("-------------------------------------------------------")
+print("           Welcome to the Flight Finder App!           ")
+print("-------------------------------------------------------")
+print("                                                       ")
+print("                Lets find you a flight!                ")
+print("                                                       ")
 
 # Collect user inputs
 
@@ -16,6 +32,14 @@ destination_input_value = input("Please Input Destination Airport:")
 year_input_value = input("Please Input Departure Year (yyyy):")
 month_input_value = input("Please Input Departure Month (mm):")
 day_input_value= input("Please Input Departure Day (dd):")
+
+## FOR EASIER RUNNING DURING TESTING
+
+# origin_input_value = "SFO"
+# destination_input_value = "JFK"
+# year_input_value = "2021"
+# month_input_value = "08"
+# day_input_value= "01"
 
 # Clean up the inputs
 country_input = "US"
@@ -40,8 +64,14 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 print("-------------------------------------------------------")
 print("                                                       ")
 print("Cheapest Flight Available:")
-print(response.text)
-#print(response.text["Quotes"])
 
-#j =json.loads(response.text)
-#print(json.dumps(j, indent =2))
+raw_data = json.loads(response.text)
+# print(type(raw_data))
+
+cheapest_airline = raw_data["Carriers"][0]["Name"]
+cheapest_price = to_usd(raw_data["Quotes"][1]["MinPrice"])
+cheapest_direct = raw_data["Quotes"][1]["Direct"]
+
+print("Airline:",cheapest_airline)
+print("Price:",cheapest_price)
+print("Is Direct?",cheapest_direct)
