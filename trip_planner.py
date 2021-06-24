@@ -71,7 +71,10 @@ raw_data = json.loads(response.text)
 cheapest_airline = raw_data["Carriers"][0]["Name"]
 cheapest_price = to_usd(raw_data["Quotes"][1]["MinPrice"])
 cheapest_direct = raw_data["Quotes"][1]["Direct"]
+if cheapest_direct == True:
+    if True: cheapest_direct = "Yes"
+    if False: cheapest_direct = "Yes"
 
 print("Airline:",cheapest_airline)
 print("Price:",cheapest_price)
-print("Is Direct?",cheapest_direct)
+print("Is Direct:",cheapest_direct)
