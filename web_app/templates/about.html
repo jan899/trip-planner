@@ -1,40 +1,10 @@
-{% extends "layout.html" %}
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "about" %}
 
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ADJP Flight Planner</title>
-</head>
-<body>
-
-    <h1>About Us</h1>
+    <h1>About Me</h1>
 
     <p>This is a flight application created by Pratik Desai, Dan Spinelli, Adam Whitten, and Jan Zielonka. You can navigate to the cheapest flight between two cities by inputting the departure city, arrival city, and departure date. We hope you enjoy!</p>
 
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </nav>
-
-    <footer>
-        <p>My footer</p>
-    </footer>
-
-</body>
-</html>
-
 {% endblock %}
-
-
-
-
-
-
-
-
-
