@@ -61,20 +61,25 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
-print("-------------------------------------------------------")
-print("                                                       ")
-print("Cheapest Flight Available:")
+
 
 raw_data = json.loads(response.text)
 # print(type(raw_data))
-
-cheapest_airline = raw_data["Carriers"][0]["Name"]
-cheapest_price = to_usd(raw_data["Quotes"][1]["MinPrice"])
-cheapest_direct = raw_data["Quotes"][1]["Direct"]
-if cheapest_direct == True:
-    if True: cheapest_direct = "Yes"
-    if False: cheapest_direct = "Yes"
-
-print("Airline:",cheapest_airline)
-print("Price:",cheapest_price)
-print("Is Direct:",cheapest_direct)
+try:
+  
+    cheapest_airline = raw_data["Carriers"][0]["Name"]
+    cheapest_price = to_usd(raw_data["Quotes"][1]["MinPrice"])
+    cheapest_direct = raw_data["Quotes"][1]["Direct"]
+    if cheapest_direct == True:
+        if True: cheapest_direct = "Yes"
+        if False: cheapest_direct = "No"
+    print("-------------------------------------------------------")
+    print("                                                       ")
+    print("Cheapest Flight Available:")
+    print("Airline:",cheapest_airline)
+    print("Price:",cheapest_price)
+    print("Is Direct:",cheapest_direct)
+except IndexError:
+    print("-------------------------------------------------------")
+    print("                                                       ")
+    print("Please Review Inputs")
