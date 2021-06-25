@@ -19,7 +19,7 @@ def about():
     #return "About Me"
     return render_template("about.html")
 
-@home_routes.route("/home/results", methods=["GET", "POST"])
+@home_routes.route("/home/results", methods=["POST"])
 def r():
     print("RESULTS...")
     #return "About Me"
@@ -27,14 +27,14 @@ def r():
     
     #if request.method == "GET":
     #   print("URL PARAMS:". dict(request.args))
-    results_data = dict(request.args)
+    results_data = dict(request.form)
 
     departure_airport_code = results_data.get("departure_airport_code")
     arrival_airport_code = results_data.get("arrival_airport_code")
     departure_date = results_data.get("departure_date")
 
 
-    return render_template("trip_results.html")   
+    return render_template("trip_results.html",departure_airport_code=departure_airport_code,arrival_airport_code=arrival_airport_code,departure_date=departure_date, cheapest_price=None)   
 
 
 
