@@ -1,6 +1,7 @@
 # web_app/routes/home_routes.py
 
 from flask import Blueprint, request, render_template, jsonify
+from app.trip_planner import fetch_flight_data, to_usd
 
 #from app.weather_service import get_hourly_forecasts
 
@@ -33,10 +34,27 @@ def r():
     arrival_airport_code = results_data.get("arrival_airport_code")
     departure_date = results_data.get("departure_date")
 
+    
 
-    return render_template("trip_results.html",departure_airport_code=departure_airport_code,arrival_airport_code=arrival_airport_code,departure_date=departure_date, cheapest_price=None)   
-
-
+       
+    try:
+        
+        raw_data = fetch_flight_data(departure_airport_code, arrival_airport_code, departure_date)
+        
+        cheapest_airline = raw_data["Carriers"][0]["Name"]
+        cheapest_price = to_usd(raw_data["Quotes"][0]["MinPrice"])
+        cheapest_direct = raw_data["Quotes"][0]["Direct"]
+        if cheapest_direct == True:
+            if True: cheapest_direct = "Yes"
+            if False: cheapest_direct = "No"
+        return render_template("trip_results.html",departure_airport_code=departure_airport_code,arrival_airport_code=arrival_airport_code,departure_date=departure_date, cheapest_airline=cheapest_airline, cheapest_price=cheapest_price, cheapest_direct=cheapest_direct)
+    except IndexError:
+        #redirect to home, fill out form again (my daily breifings)
+        
+        print("-------------------------------------------------------")
+        print("                                                       ")
+        print("Please Review Inputs")
+    
 
 
 #@home_routes.route("/hello")
