@@ -28,6 +28,35 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
+
+#new function
+
+def fetch_flight_data(departure_airport_code, arrival_airport_code, departure_date):
+
+    country_input = "US"
+    currency_input = "USD"
+    origin_input = origin_input_value
+    destination_input = destination_input_value
+
+
+    url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{country}/{currency}/en-US/{origin}-sky/{destination}-sky/{date}".format(country=country_input, currency=currency_input, origin=origin_input,destination=destination_input,date=date_input)
+
+    querystring = {"inboundpartialdate":date_input}
+
+    # We'll need to include an API variable here via the .env thing
+    headers = {
+        'x-rapidapi-key': "e5eb6fe9efmshdc31df18adcf9acp183317jsndafb7aac79e2",
+        'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+        }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+
+
+    raw_data = json.loads(response.text)
+    return raw_data
+
+
 # Introduce the user to the app
 
 print("-------------------------------------------------------")
@@ -54,29 +83,31 @@ day_input_value= input("Please Input Departure Day (dd):")
 # day_input_value= "01"
 
 # Clean up the inputs
-country_input = "US"
-currency_input = "USD"
-origin_input = origin_input_value
-destination_input = destination_input_value
+#country_input = "US"
+#currency_input = "USD"
+#origin_input = origin_input_value
+#destination_input = destination_input_value
 date_input = year_input_value+"-"+month_input_value+"-"+day_input_value
 
 
-url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{country}/{currency}/en-US/{origin}-sky/{destination}-sky/{date}".format(country=country_input, currency=currency_input, origin=origin_input,destination=destination_input,date=date_input)
-
-querystring = {"inboundpartialdate":date_input}
-
-# We'll need to include an API variable here via the .env thing
-headers = {
-    'x-rapidapi-key': "e5eb6fe9efmshdc31df18adcf9acp183317jsndafb7aac79e2",
-    'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
-    }
-
-response = requests.request("GET", url, headers=headers, params=querystring)
-
-
-
-raw_data = json.loads(response.text)
+#url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{country}/{currency}/en-US/{origin}-sky/{destination}-sky/{date}".format(country=country_input, currency=currency_input, origin=origin_input,destination=destination_input,date=date_input)
+#
+#querystring = {"inboundpartialdate":date_input}
+#
+## We'll need to include an API variable here via the .env thing
+#headers = {
+#    'x-rapidapi-key': "e5eb6fe9efmshdc31df18adcf9acp183317jsndafb7aac79e2",
+#    'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+#    }
+#
+#response = requests.request("GET", url, headers=headers, params=querystring)
+#
+#
+#
+#raw_data = json.loads(response.text)
+raw_data = fetch_flight_data(origin_input_value, destination_input_value, date_input)
 # print(type(raw_data))
+
 try:
   
     cheapest_airline = raw_data["Carriers"][0]["Name"]
