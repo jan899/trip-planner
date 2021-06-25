@@ -14,6 +14,11 @@ load_dotenv()
 
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", default="OOPS, please set env var called 'SENDGRID_API_KEY'")
 SENDER_ADDRESS = os.getenv("SENDER_ADDRESS", default="OOPS, please set env var called 'SENDER_ADDRESS'")
+RAPID_API_KEY = os.getenv("RAPID_API_KEY", default="OOPS, please set env var called 'RAPID_API_KEY'")
+RAPID_HOST = os.getenv("RAPID_HOST", default="OOPS, please set env var called 'RAPID_HOST'")
+
+    # RAPID_API_KEY = str(RAPID_API_KEY)
+    # RAPID_HOST = str(RAPID_HOST)
 
 # Credit: Professor Rossetti 
 def to_usd(my_price):
@@ -41,11 +46,13 @@ def fetch_flight_data(departure_airport_code, arrival_airport_code, departure_da
 
     querystring = {"inboundpartialdate":departure_date}
 
-    # We'll need to include an API variable here via the .env thing
     headers = {
-        'x-rapidapi-key': "e5eb6fe9efmshdc31df18adcf9acp183317jsndafb7aac79e2",
-        'x-rapidapi-host': "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+        'x-rapidapi-key': RAPID_API_KEY,
+        'x-rapidapi-host': RAPID_HOST
         }
+
+    # print(headers)
+    # print(type(headers))
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
