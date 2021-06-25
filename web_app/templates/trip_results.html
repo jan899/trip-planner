@@ -5,23 +5,14 @@
 
     <h2>Results</h2>
 
+    <p>Departure Airport: {{ departure_airport_code }}</p>
+
+    <p>Arrival Airport: {{ arrival_airport_code }}</p>
+
+    <p>Departure Date: {{ departure_date }}</p>
+
     <p>Cheapest Price: {{ cheapest_price }}</p>
 
-    <form action="/home/results" method="POST">
 
-        <label>Departure Airport:</label>
-        <input type="text" name="airport_code" placeholder="JFK" value="JFK">
-        <br>
-        
-        <label>Arrival Airport:</label>
-        <input type="text" name="airport_code" placeholder="LAX" value="LAX">
-        <br>
-
-        <label>Departure Date:</label>
-        <input type="text" name="departure_date" placeholder="2021-07-01" value="2021-07-01">
-        <br>
-
-        <button>Submit</button>
-    </form>
 
 {% endblock %}
