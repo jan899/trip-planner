@@ -114,6 +114,8 @@ if __name__ == "__main__":
     raw_data = fetch_flight_data(origin_input_value, destination_input_value, date_input)
     # print(type(raw_data))
 
+
+
     try:
     
         cheapest_airline = raw_data["Carriers"][0]["Name"]
@@ -131,7 +133,12 @@ if __name__ == "__main__":
     except IndexError:
         print("-------------------------------------------------------")
         print("                                                       ")
-        print("Please Review Inputs")
+        print("No Flights Available")
+    except KeyError:
+        print("-------------------------------------------------------")
+        print("                                                       ")
+        print("Please Review User Inputs, Airport or Date Invalid")
+
 
     # Sending email 
 
