@@ -49,13 +49,9 @@ def r():
             if False: cheapest_direct = "No"
         return render_template("trip_results.html",departure_airport_code=departure_airport_code,arrival_airport_code=arrival_airport_code,departure_date=departure_date, cheapest_airline=cheapest_airline, cheapest_price=cheapest_price, cheapest_direct=cheapest_direct)
     except IndexError:
-        print("-------------------------------------------------------")
-        print("                                                       ")
-        print("No Flights Available")
+        return render_template("error_page_noflights.html")
     except KeyError:
-        print("-------------------------------------------------------")
-        print("                                                       ")
-        print("Please Review User Inputs, Airport or Date Invalid")
+        return render_template("error_page_airport.html")
     
 
 
