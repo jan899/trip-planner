@@ -51,7 +51,7 @@ def r():
     except IndexError:
         return render_template("error_page_noflights.html")
     except KeyError:
-        return render_template("error_page_airport.html")
+        return render_template("error_page_invalid.html")
     
 
 
