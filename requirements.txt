@@ -4,6 +4,7 @@
 python-dotenv
 requests
 sendgrid
+pytest
 
 
 # WEB INTERFACE
