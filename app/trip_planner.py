@@ -140,7 +140,7 @@ if __name__ == "__main__":
         print("Please Review User Inputs, Airport or Date Invalid")
 
 
-    # Sending email 
+    # Sending email -- if email does not send, it may be due to Sendgrid API lockout
 
     user_wants_email = input("Would the customer like an emailed receipt [y/n]: ")
 
@@ -161,8 +161,7 @@ if __name__ == "__main__":
         <p>Direct: {cheapest_direct} </p>
         """
 
-        # FYI: we'll need to use our verified SENDER_ADDRESS as the `from_email` param
-        # ... but we can customize the `to_emails` param to send to other addresses
+    
         message = Mail(from_email=SENDER_ADDRESS, to_emails=CLIENT_ADDRESS, subject=subject, html_content=html_content)
 
         try:
