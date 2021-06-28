@@ -57,3 +57,7 @@ FLASK_APP=web_app flask run
 export FLASK_APP=web_app
 flask run
 '''
+
+## [Deploying](/DEPLOYING.md)
+
+Follow the deployment instructions to deploy the app to a remote server.
