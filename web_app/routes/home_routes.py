@@ -45,8 +45,9 @@ def r():
         cheapest_price = to_usd(raw_data["Quotes"][0]["MinPrice"])
         cheapest_direct = raw_data["Quotes"][0]["Direct"]
         if cheapest_direct == True:
-            if True: cheapest_direct = "Yes"
-            if False: cheapest_direct = "No"
+            cheapest_direct = "Yes"
+        else:    
+            cheapest_direct = "No"
         return render_template("trip_results.html",departure_airport_code=departure_airport_code,arrival_airport_code=arrival_airport_code,departure_date=departure_date, cheapest_airline=cheapest_airline, cheapest_price=cheapest_price, cheapest_direct=cheapest_direct)
     except IndexError:
         return render_template("error_page_noflights.html")
