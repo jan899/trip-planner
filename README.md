@@ -33,6 +33,9 @@ Create a local .env file to this repo and put the following contents inside:
 '''
 SENDGRID_API_KEY="_______________"
 SENDER_ADDRESS="______________"
+
+RAPID_API_KEY="______________"
+RAPID_HOST="______________"
 '''
 
 ## Run
@@ -60,4 +63,12 @@ flask run
 
 ## [Deploying](/DEPLOYING.md)
 
-Follow the deployment instructions to deploy the app to a remote server.
+Follow the deployment instructions to deploy the app to a remote server
+
+## Testing
+
+Run the below
+
+'''
+pytest
+'''
